@@ -13,13 +13,12 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Node
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v2
       with:
-        node-version: '12.x'
+        node-version: 10
         registry-url: 'https://npm.pkg.github.com'
-    - uses: microsoft/playwright-github-action@v1
-    - name: Build 
-      run: npm ci
+    - name: Build
+      run: npm install
            npm run build
     - name: Publish
       run: utils/publish_all_packages.sh --tip-of-tree
