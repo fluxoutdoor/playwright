@@ -23,6 +23,5 @@ jobs:
            npm run build
     - name: Publish
       run: utils/publish_all_packages.sh --tip-of-tree
-           npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
