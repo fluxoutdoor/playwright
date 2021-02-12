@@ -3,10 +3,12 @@
   "private": true,
   "version": "1.9.0-next",
   "description": "A high-level API to automate web browsers",
-  "repository": "github:Microsoft/playwright",
-  "homepage": "https://playwright.dev",
+  "repository": "git://github.com/fluxoutdoor/playwright.git",
   "engines": {
     "node": ">=10.17.0"
+  },
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com"
   },
   "scripts": {
     "ctest": "cross-env BROWSER=chromium folio test/",
