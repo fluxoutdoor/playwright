@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.9.0-next",
   "description": "A high-level API to automate web browsers",
-  "repository": "https://github.com/fluxoutdoor/playwright",
+  "repository": "git://github.com/fluxoutdoor/playwright",
   "engines": {
     "node": ">=10.17.0"
   },
