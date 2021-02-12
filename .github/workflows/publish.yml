@@ -17,6 +17,7 @@ jobs:
         registry-url: 'https://npm.pkg.github.com'
     - run: npm install
     - run: npm run build
-    - run: utils/publish_all_packages.sh --tip-of-tree
+    - run: npm config set registry https://npm.pkg.github.com/fluxoutdoor/
+      run: utils/publish_all_packages.sh --tip-of-tree
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
