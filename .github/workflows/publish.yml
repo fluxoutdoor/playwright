@@ -15,6 +15,7 @@ jobs:
       with:
         node-version: 10
         registry-url: 'https://npm.pkg.github.com'
+        scope: '@fluxoutdoor'
     - run: npm install
     - run: npm run build
     - run: utils/publish_all_packages.sh --tip-of-tree
