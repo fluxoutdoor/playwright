@@ -67,18 +67,18 @@ VERSION=$(node -e 'console.log(require("./package.json").version)')
 #     exit 1
 #   fi
 
-  # Ensure this is actually tip-of-tree.
-  UPSTREAM_SHA=$(git ls-remote https://github.com/fluxoutdoor/playwright --tags $(git rev-parse --abbrev-ref HEAD) | cut -f1)
-  CURRENT_SHA=$(git rev-parse HEAD)
-  if [[ "${UPSTREAM_SHA}" != "${CURRENT_SHA}" ]]; then
-    echo "FYI: REFUSING TO PUBLISH since this is not tip-of-tree"
-    exit 0
-  fi
-  NPM_PUBLISH_TAG="next"
-else
-  echo "unknown argument - '$1'"
-  exit 1
-fi
+#   # Ensure this is actually tip-of-tree.
+#   UPSTREAM_SHA=$(git ls-remote https://github.com/microsoft/playwright --tags $(git rev-parse --abbrev-ref HEAD) | cut -f1)
+#   CURRENT_SHA=$(git rev-parse HEAD)
+#   if [[ "${UPSTREAM_SHA}" != "${CURRENT_SHA}" ]]; then
+#     echo "FYI: REFUSING TO PUBLISH since this is not tip-of-tree"
+#     exit 0
+#   fi
+#   NPM_PUBLISH_TAG="next"
+# else
+#   echo "unknown argument - '$1'"
+#   exit 1
+# fi
 
 echo "==================== Building version ${VERSION} ================"
 
