@@ -20,7 +20,6 @@ jobs:
     - name: Build
       run: npm install
            npm run build
-    - name: Publish
-      run: utils/publish_all_packages.sh --tip-of-tree
+           utils/publish_all_packages.sh --tip-of-tree
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
