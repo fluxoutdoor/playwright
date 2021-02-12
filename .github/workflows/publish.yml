@@ -16,7 +16,7 @@ jobs:
         node-version: '12.x'
     - run: npm install
     - run: npm run build
-    - run: npm whoami
-    - run: utils/publish_all_packages.sh --tip-of-tree
+    - run: npm config set '//npm.pkg.github.com/:_authToken' "${NODE_AUTH_TOKEN}"
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - run: utils/publish_all_packages.sh --tip-of-tree
