@@ -7,9 +7,6 @@
   "engines": {
     "node": ">=10.17.0"
   },
-  "publishConfig": {
-    "registry":"https://npm.pkg.github.com"
-  },
   "scripts": {
     "ctest": "cross-env BROWSER=chromium folio test/",
     "ftest": "cross-env BROWSER=firefox folio test/",
