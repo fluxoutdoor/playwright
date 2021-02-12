@@ -45,27 +45,27 @@ NPM_PUBLISH_TAG="next"
 
 VERSION=$(node -e 'console.log(require("./package.json").version)')
 
-if [[ $1 == "--release" ]]; then
-  if [[ -n $(git status -s) ]]; then
-    echo "ERROR: git status is dirty; some uncommitted changes or untracked files"
-    exit 1
-  fi
-  # Ensure package version does not contain dash.
-  if [[ "${VERSION}" == *-* ]]; then
-    echo "ERROR: cannot publish pre-release version with --release flag"
-    exit 1
-  fi
-  NPM_PUBLISH_TAG="latest"
-elif [[ $1 == "--tip-of-tree" ]]; then
-  if [[ $(git status -s) != " M package.json" ]]; then
-    echo "ERROR: git status is unexpected; some uncommitted changes or untracked files"
-    exit 1
-  fi
-  # Ensure package version contains dash.
-  if [[ "${VERSION}" != *-* ]]; then
-    echo "ERROR: cannot publish release version with --tip-of-tree flag"
-    exit 1
-  fi
+# if [[ $1 == "--release" ]]; then
+#   if [[ -n $(git status -s) ]]; then
+#     echo "ERROR: git status is dirty; some uncommitted changes or untracked files"
+#     exit 1
+#   fi
+#   # Ensure package version does not contain dash.
+#   if [[ "${VERSION}" == *-* ]]; then
+#     echo "ERROR: cannot publish pre-release version with --release flag"
+#     exit 1
+#   fi
+#   NPM_PUBLISH_TAG="latest"
+# elif [[ $1 == "--tip-of-tree" ]]; then
+#   if [[ $(git status -s) != " M package.json" ]]; then
+#     echo "ERROR: git status is unexpected; some uncommitted changes or untracked files"
+#     exit 1
+#   fi
+#   # Ensure package version contains dash.
+#   if [[ "${VERSION}" != *-* ]]; then
+#     echo "ERROR: cannot publish release version with --tip-of-tree flag"
+#     exit 1
+#   fi
 
   # Ensure this is actually tip-of-tree.
   UPSTREAM_SHA=$(git ls-remote https://github.com/microsoft/playwright --tags $(git rev-parse --abbrev-ref HEAD) | cut -f1)
