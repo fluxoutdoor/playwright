@@ -24,4 +24,5 @@ jobs:
     - name: Publish
       run: |
         printf "registry=https://npm.pkg.github.com/fluxoutdoor/\n//npm.pkg.github.com/:_authToken=${{ secrets.GH_Packages }}" > ~/.npmrc
-        utils/publish_all_packages.sh --tip-of-tree
+        node ./packages/build_package.js playwright "$PWD/playwright.tgz"
+        npm publish $PWD/playwright.tgz
