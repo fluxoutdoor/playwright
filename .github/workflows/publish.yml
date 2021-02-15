@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: 🚀 Publish
+    name: Build & Publish 🚀
     runs-on: ubuntu-18.04
     steps:
 
@@ -15,16 +15,15 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: 12
-        registry-url: 'https://registry.npmjs.org/'
-    - name: Publish to GitHub Package Registry
+    - name: Build
       run: npm install && npm run build
 
     - uses: actions/setup-node@v2
       with:
         node-version: 12
-        registry-url: https://npm.pkg.github.com/
-        scope: '@fluxoutdoor'
-    - name: Publish to GitHub Package Registry
-      run: utils/publish_all_packages.sh --tip-of-tree
+    - name: Publish
+      run: |
+        printf "registry=https://npm.pkg.github.com/\n//npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
+        utils/publish_all_packages.sh --tip-of-tree
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
