@@ -23,7 +23,7 @@ jobs:
         node-version: 12
     - name: Publish
       run: |
-        printf "registry=https://npm.pkg.github.com/fluxoutdoor/\n//npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
+        printf "registry=https://npm.pkg.github.com/fluxoutdoor/\n//npm.pkg.github.com/fluxoutdoor/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
         utils/publish_all_packages.sh --tip-of-tree
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
