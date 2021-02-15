@@ -21,10 +21,7 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: 12
-        scope: '@fluxoutdoor'
     - name: Publish
       run: |
-        printf "@fluxoutdoor:registry=https://npm.pkg.github.com/fluxoutdoor/\n//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
+        printf "registry=https://npm.pkg.github.com/fluxoutdoor/\n//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
         utils/publish_all_packages.sh --tip-of-tree
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
