@@ -15,11 +15,7 @@ jobs:
       with:
         node-version: '12.x'
     - run: npm install
-      env:
-        NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: npm run build
-      env:
-        NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: utils/publish_all_packages.sh --tip-of-tree
       env:
-        NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
