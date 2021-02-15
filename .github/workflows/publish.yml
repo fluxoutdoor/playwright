@@ -15,8 +15,9 @@ jobs:
       with:
         node-version: '12.x'
     - run: npm install
+      env:
+        NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: npm run build
-    - run: npm login --registry=https://npm.pkg.github.com --scope=@fluxoutdoor
       env:
         NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: utils/publish_all_packages.sh --tip-of-tree
