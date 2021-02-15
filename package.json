@@ -1,12 +1,9 @@
 {
-  "name": "@fluxoutdoor/playwright-internal",
+  "name": "@fluxoutdoor/playwright",
   "private": true,
   "version": "1.9.0-next",
   "description": "A high-level API to automate web browsers",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/fluxoutdoor/playwright.git"
-  },
+  "repository": "git://github.com/fluxoutdoor/playwright.git",
   "engines": {
     "node": ">=10.17.0"
   },
