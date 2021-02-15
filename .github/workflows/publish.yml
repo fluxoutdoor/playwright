@@ -10,12 +10,21 @@ jobs:
     name: 🚀 Publish
     runs-on: ubuntu-18.04
     steps:
+
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
       with:
-        node-version: '12.x'
-    - run: npm install
-    - run: npm run build
-    - run: utils/publish_all_packages.sh --tip-of-tree
+        node-version: 12
+        registry-url: 'https://registry.npmjs.org/'
+    - name: Publish to GitHub Package Registry
+      run: npm install
+
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 12
+        registry-url: https://npm.pkg.github.com/
+        scope: '@fluxoutdoor'
+    - name: Publish to GitHub Package Registry
+      run: utils/publish_all_packages.sh --tip-of-tree
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
