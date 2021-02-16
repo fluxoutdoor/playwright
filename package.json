@@ -3,7 +3,10 @@
   "private": true,
   "version": "1.0.0",
   "description": "A high-level API to automate web browsers",
-  "repository": "git://github.com/fluxoutdoor/playwright.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fluxoutdoor/playwright"
+  },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/fluxoutdoor"
   },
