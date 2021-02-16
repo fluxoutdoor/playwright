@@ -18,13 +18,13 @@ jobs:
     - name: Build
       run: npm install && npm run build
 
-    - uses: actions/setup-node@master
+    - uses: actions/setup-node@v2
       with:
         node-version: 12
         scope: '@fluxoutdoor'
-        registry-url: 'https://npm.pkg.github.com/'
     - name: Publish
       run: |
+        printf "registry=https://npm.pkg.github.com/fluxoutdoor/\n//npm.pkg.github.com/:_authToken=${{ secrets.GH_Packages }}" > ~/.npmrc
         node ./packages/build_package.js playwright "$PWD/playwright.tgz"
         npm publish $PWD/playwright.tgz
       env:
