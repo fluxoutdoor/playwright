@@ -21,8 +21,11 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: 12
+        scope: '@fluxoutdoor'
     - name: Publish
       run: |
         printf "registry=https://npm.pkg.github.com/fluxoutdoor/\n//npm.pkg.github.com/:_authToken=${{ secrets.GH_Packages }}" > ~/.npmrc
         node ./packages/build_package.js playwright "$PWD/playwright.tgz"
         npm publish $PWD/playwright.tgz
+      env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_Packages }}
