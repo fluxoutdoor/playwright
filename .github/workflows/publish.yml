@@ -22,6 +22,7 @@ jobs:
       with:
         node-version: 12
         scope: '@fluxoutdoor'
+        always-auth: true
     - name: Publish
       run: |
         printf "registry=https://npm.pkg.github.com/fluxoutdoor/\n//npm.pkg.github.com/:_authToken=${{ secrets.GH_Packages }}" > ~/.npmrc
